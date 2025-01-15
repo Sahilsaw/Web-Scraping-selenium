@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Trends Scraper</title>
+    <script>
+        async function runScript() {
+            try {
+                const response = await fetch("/run_script");
+                const data = await response.json();
+
+                const resultDiv = document.getElementById("result");
+
+                if (data.error) {
+                    resultDiv.innerHTML = `<p>Error: ${data.error}</p>`;
+                    return;
+                }
+
+                // Build topics list
+                const topicsList = data.topics.map(topic => `<li>${topic}</li>`).join("");
+
+                // Build JSON extract
+                const jsonExtract = JSON.stringify(data.json_extract, null, 2);
+
+                resultDiv.innerHTML = `
+                    <h3>${data.message}</h3>
+                    <ul>${topicsList}</ul>
+                    <p>The IP address used for this query was ${data.proxy}</p>
+                    <h4>Here’s a JSON extract of this record from the MongoDB:</h4>
+                    <pre>${jsonExtract}</pre>
+                    <button onclick="runScript()">Click here to run the query again</button>
+                `;
+            } catch (error) {
+                console.error("Error running the script:", error);
+                document.getElementById("result").innerHTML = "<p>Something went wrong while fetching data.</p>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Twitter Trends Scraper</h1>
+    <button onclick="runScript()">Click here to run the script</button>
+    <div id="result"></div>
+</body>
+</html>
