@@ -1,32 +1,33 @@
 
-# Web-Scraping-Selenium
+# Twitter Scraping Project
 
-This project scrapes trending topics from Twitter's homepage using Selenium, stores them in MongoDB, and displays the results on a webpage.
+This project is designed to scrape the top 5 trending topics from Twitter's homepage using Selenium, ProxyMesh for rotating IPs, and store the results in MongoDB.
 
 ## Steps to Run the Project
 
-1. Start the MongoDB server on port 27017.
-2. In the terminal, navigate to the project directory and run the following commands:
+1. Start MongoDB server on port 27017
+2. Switch to the `TwitterScraping` database:
+   ```bash
+   use TwitterScraping
+   ```
+3. Create the `trends` collection:
+   ```bash
+   db.createCollection("trends")
+   ```
 
-```bash
-pip install -r requirements.txt
-python app.py
-```
+4. Run the following commands in your terminal, making sure you are in the project directory:
+   ```bash
+   pip install -r requirements.txt
+   python app.py
+   ```
 
-3. Change the username and password in the script to your Twitter username and password.
+5. Change the username and password in the script to your Twitter credentials.
 
-## Requirements
-
-- MongoDB
-- Python 3.x
+## Technologies Used
+- Python
 - Selenium
-- Flask
-- ProxyMesh (for IP rotation)
-
-## Usage
-
-Once the server is running, you can trigger the scraping task by clicking the button on the webpage. The results will display the trending topics along with the IP address used for scraping and a JSON extract from MongoDB.
+- MongoDB
+- ProxyMesh
 
 ## License
-
 This project is licensed under the MIT License.
