@@ -28,6 +28,3 @@ This project is designed to scrape the top 5 trending topics from Twitter's home
 - Selenium
 - MongoDB
 - ProxyMesh
-
-## License
-This project is licensed under the MIT License.
