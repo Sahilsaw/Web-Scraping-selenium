@@ -41,7 +41,7 @@ def scrape_twitter():
 
         # Find the username input field using XPath
         username = driver.find_element(By.XPATH, "//input[@name='text']")
-        username.send_keys("@Bhuvankuma17741")
+        username.send_keys("@Your_username")
 
         # Find the "Next" button and click it automatically
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Next']")))
@@ -54,7 +54,7 @@ def scrape_twitter():
         print("Password field is visible, entering password...")
 
         password = driver.find_element(By.XPATH, "//input[@name='password']")
-        password.send_keys("Saktimanisnoob1!")
+        password.send_keys("Your_password")
 
         # Submit the login form (press Enter)
         print("Submitting login form...")
